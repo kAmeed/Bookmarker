@@ -38,6 +38,19 @@ function clearBookmark(){
     siteName.classList.remove('is-valid');
     siteUrl.classList.remove('is-valid');
 }
+function deleteBookmark(index){
+    container.splice(index,1);
+    localStorage.setItem('saved',JSON.stringify(container));
+
+    if (container=='') {
+        var cartona='';
+        content.innerHTML= cartona;
+    }else{
+        displayBookmark();
+    }
+
+
+}
 
 function displayBookmark(){
     var cartona='';
@@ -50,12 +63,6 @@ for (let i = 0; i < container.length; i++) {
   </tr>`
   content.innerHTML= cartona;
 }    
-}
-
-function deleteBookmark(index){
-    container.splice(index,1);
-    localStorage.setItem('saved',JSON.stringify(container));
-    displayBookmark();
 }
 
 function validateInput(element){
